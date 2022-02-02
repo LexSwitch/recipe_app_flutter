@@ -9,8 +9,9 @@ Not fully done. More features are being added.
 ## Screenshots below:
 
 <p float=left>
-<img src="screenshots/Screenshot1.png" width=400px>
-<img src="screenshots/Screenshot2.png" width=400px>
-<img src="screenshots/Screenshot3.png" width=400px>
-<img src="screenshots/Screenshot4.png" width=400px>
+<img src="screenshots/Screenshot1.png" width=300px>
+<img src="screenshots/Screenshot2.png" width=300px>
+<img src="screenshots/Screenshot3.png" width=300px>
+<img src="screenshots/Screenshot4.png" width=300px>
+<img src="screenshots/Screenshot5.png" width=300px>
 </p>
