@@ -14,4 +14,5 @@ Not fully done. More features are being added.
 <img src="screenshots/Screenshot3.png" width=300px>
 <img src="screenshots/Screenshot4.png" width=300px>
 <img src="screenshots/Screenshot5.png" width=300px>
+<img src="screenshots/Screenshot6.png" width=300px>
 </p>
