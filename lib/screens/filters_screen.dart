@@ -1,18 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:meals_app_flutter_app/widgets/main_drawer.dart';
 
 class FiltersScreen extends StatefulWidget {
   static const routeName = '/filters';
+
+  final Function saveFilters;
+  final Map<String, bool> currentFilters;
+
+  FiltersScreen(this.currentFilters, this.saveFilters);
 
   @override
   State<FiltersScreen> createState() => _FiltersScreenState();
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
-  var _glutenFree = false;
-  var _vegetarian = false;
-  var _vegan = false;
-  var _lactoseFree = false;
+  bool _glutenFree = false;
+  bool _vegetarian = false;
+  bool _vegan = false;
+  bool _lactoseFree = false;
+
+  @override
+  void initState() {
+    _glutenFree = widget.currentFilters['gluten'] as bool;
+    _lactoseFree = widget.currentFilters['lactose'] as bool;
+    _vegetarian = widget.currentFilters['vegetarian'] as bool;
+    _vegan = widget.currentFilters['vegan'] as bool;
+    super.initState();
+  }
 
   Widget _buildSwitchListTile(String title, String desc, bool currentValue,
       Function(bool) updateValue) {
@@ -28,6 +44,26 @@ class _FiltersScreenState extends State<FiltersScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Your Filters'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                final selectedFilters = {
+                  'gluten': _glutenFree,
+                  'lactose': _lactoseFree,
+                  'vegan': _vegetarian,
+                  'vegetarian': _vegan
+                };
+                widget.saveFilters(selectedFilters);
+                Fluttertoast.showToast(
+                    msg: "Preferences updated successfully.",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    backgroundColor: Color.fromRGBO(217, 83, 79, 1),
+                    textColor: Color.fromRGBO(255, 238, 173, 1),
+                    fontSize: 16.0);
+              },
+              icon: Icon(Icons.save))
+        ],
       ),
       drawer: MainDrawer(),
       body: Column(
@@ -55,13 +91,13 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 },
               ),
               _buildSwitchListTile(
-                'Vegetarian',
-                'Show only vegetarian meals.',
-                _vegetarian,
+                'Lactose-free',
+                'Show only lactose-free meals',
+                _lactoseFree,
                 (newValue) {
                   setState(
                     () {
-                      _vegetarian = newValue;
+                      _lactoseFree = newValue;
                     },
                   );
                 },
@@ -79,13 +115,13 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 },
               ),
               _buildSwitchListTile(
-                'Lactose-free',
-                'Show only lactose-free meals',
-                _lactoseFree,
+                'Vegetarian',
+                'Show only vegetarian meals.',
+                _vegetarian,
                 (newValue) {
                   setState(
                     () {
-                      _lactoseFree = newValue;
+                      _vegetarian = newValue;
                     },
                   );
                 },
