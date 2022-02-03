@@ -3,7 +3,7 @@
 A  Flutter recipe app.
 
 ## Getting Started
-A simple flutter recipe app with Navigation, side drawer and filters.
+A simple flutter recipe app with Navigation, side drawer, favourites tab and custom filters.
 Not fully done. More features are being added.
 
 ## Screenshots below:
